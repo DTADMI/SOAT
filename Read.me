@@ -1,0 +1,48 @@
+READ.ME
+
+Ce programme développé sur IntelliJ, répond au problème suivant.
+
+Le ministère des finances vous demande de créer un programme devant permettre de calculer les impôts dus par les entreprises françaises.
+Dans un premier temps, ce programme devra gérer 2 types d'entreprise :
+
+Les auto-entreprises, qui ont les propriétés suivantes :
+
+N° SIRET
+Dénomination
+
+Les SAS, qui ont les propriétés suivantes :
+
+N° SIRET
+Dénomination
+Adresse du siège social
+
+Le programme sera étendu par la suite avec d'autres types d'entreprise (SASU, SARL ...) Par ailleurs, le calcul des impôts devra respecter les règles de gestion suivantes :
+Pour les auto-entreprises :
+impôts = 25% du CA annuel de l'entreprise
+Pour les SAS :
+impôts = 33% du CA annuel de l'entreprise
+
+Note : le CA de l'entreprise sera fourni au service par la classe de test et il n'est pas nécessaire de l'inclure dans les propriétés des entreprises.
+
+
+Particularité de la solution:
+
+Le besoin était de développer une application. De fait, l'esquisse de solution proposée est indépendante, bien qu'elle ait été créée avec une démarche TDD.
+Cela signifie qu'une classe de tests est disponible (sous test.java.fr.soat.impots; elle s'appelle CalculetteImpotsTest), mais qu'une classe principale (MainClass) a quand-même été créée pour répondre au besoin d'avoir une application.
+
+Des éléments d'interactions textuelles ont été rajoutés dans cette classe de test, pour les mêmes raisons. Il aurait été plus à propos de créer une interface visuelle de calculatrice (avec un peu plus de temps), qui aurait permis de saisir les données de manière plus contrainte (liste déroulante des types d'entreprise au-lieu d'en demander la saisie, etc).
+
+Les particularités de l'interface en question sont :
+
+-> La console propose (en boucle) de saisir "CALCUL" en majuscules pour effectuer un calcul. Toute autre saisie arrête le programme.
+
+-> Un jeu de données rapide a été fourni et est exécuté si on saisit "RAPIDE" lorsque la console le propose. Toute autre saisie prompte la possibilité de rentrer soi-même son jeu de données.
+
+-> Le jeu de données en question consiste en une saisie du type d'entreprise, puis des informations propres à cette dernière, et enfin de son chiffre d'affaire
+
+-> La calculette renvoie enfin le montant calculé des impôts de cette entreprise, et propose de recommencer ou d'arrêter, en revenant à la première étape de saisie.
+
+
+Le choix d'implémenter une énumération pour la liste de types d'entreprise réside en le fait que cela soitr adapté, son seulement à une application aussi courte, mais en plus à une utilisation en switch/if et dans une interface graphique. Cependant, pour une application plus importante, il aurait été plus judicieux d'effectuer un paramétrage externe car cela est plus maintenable.
+
+Quant au choix du découpage en sous-classes contenant chacune ses propres données spécifiques, il repose sur l'idée d'étendre, à l'avenir, l'application à plusieurs autres types avec des données différentes. En effet, même si les deux types utilisés en exemple partage des données communes, rien ne dit que d'autres types les ont également en commun. De fait, seuls le taux d'imposition et le type d'entreprise ont été gardés en données génériques aux différents types d'entreprise, pour pouvoir être accessible aisément depuis une entreprise quelconque.
